@@ -1,0 +1,113 @@
+# DRAFT issue form for the public nigelose10/geek-releases repo. Not published.
+# Commit it there as .github/ISSUE_TEMPLATE/bug-report.yml (GitHub issue forms syntax),
+# together with the README in docs/runbooks/geek-releases-README.md. Delete this header
+# comment when publishing. Issues there are public, so the form asks for no secret and
+# requires a check that none is included.
+name: Bug report
+description: Something in the Geek beta doesn't work as it should.
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for testing Geek. **Issues are public.** Never include an AI key (OpenRouter keys start with `sk-or-`, Gemini keys with `AIza`), a Moodle token or any web address with `token=` or `wstoken` in it, a password or two-step code, or your calendar link. Crop screenshots that show one.
+
+  - type: checkboxes
+    id: no-secrets
+    attributes:
+      label: No secrets in this report
+      description: Required. Check everything you paste or attach, screenshots included.
+      options:
+        - label: I checked that nothing in this report or its screenshots shows an AI key, a token, a password or a calendar link.
+          required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      description: "Mac: Apple menu > About This Mac. Windows: Settings > System > About."
+      options:
+        - macOS 26 Tahoe
+        - macOS 15 Sequoia
+        - macOS 14 Sonoma
+        - macOS 13 Ventura
+        - Windows 11
+        - Something else (say which below)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: mac-chip
+    attributes:
+      label: Mac chip
+      description: 'Apple menu > About This Mac: a "Chip" line means Apple silicon; a "Processor" line that says Intel means Intel.'
+      options:
+        - Apple silicon (M1 or later)
+        - Intel
+        - Not sure
+        - Not a Mac
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Geek version
+      description: 'Settings > General > About shows a line like "Geek 0.1.0-beta.1, beta channel, on darwin arm64". Paste that line. If Geek does not open, give the file you downloaded and the release it came from.'
+      placeholder: Geek 0.1.0-beta.1, beta channel, on darwin arm64
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where it went wrong
+      options:
+        - Installing or opening Geek the first time
+        - Connecting my school (Moodle sign-in)
+        - Calendar link
+        - Home (courses, due dates, grades, announcements)
+        - Bots and chat
+        - AI key or Ollama
+        - Memory
+        - The Computer or an approval card
+        - AI-use log
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What you did, one step per line, from opening Geek.
+      placeholder: |
+        1. Opened Geek
+        2. Went to Settings > AI and models
+        3. Clicked Save and test
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: The exact words of any error message help most. Replace any key, token, password or link in them with [removed].
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Your school's Moodle address is optional and only if you're comfortable sharing it (for example moodle.yourschool.edu, never a link with a token). Screenshots are welcome once cropped.
+    validations:
+      required: false
